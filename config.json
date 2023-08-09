@@ -2,8 +2,8 @@
     "database": {
         "host": "localhost",
         "user": "root",
-        "password": "admin",
-        "database": "silicon"
+        "password": "mariconmariadb",
+        "database": "backend"
     },
     "server": {
         "port": 8080

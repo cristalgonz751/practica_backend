@@ -28,6 +28,20 @@ app.get('/', (req, res) => {
 });
 
 
+app.get('/:mail', (req, res) => {
+    params = req.params.mail
+    usuarioDb.getByEmail(params,(err, resultado) => {
+        if (err) {
+            res.status(500).send(err);
+        } else{
+            res.json(resultado);
+        }
+    });
+
+});
+
+
+
 //---------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -45,19 +59,36 @@ app.post('/', (req, res) => {
 
 });
 
+app.delete('/:mail' , (req, res) => {
+    let mail_borrar = req.params.mail;
+    usuarioDb.borrar(mail_borrar, (err ,resultado) => {
+        if (err){
+            res.status(500).send(err);
+        }
+        else{
+            res.send(resultado);
+        }
+    });
+});
+
+
+app.put('/:mail' , (req, res) => {
+    let usuario_putear = req.body;
+    let mail_putear = req.params.mail;
+    usuarioDb.modificar(usuario_putear,mail_putear, (err ,resultado) => {
+        if (err){
+            res.status(500).send(err);
+        }
+        else{
+            res.send(resultado);
+        }
+    });
+});
+
 module.exports = app;
 
 
-lucas, pod, mail
-lucre, mencia, mail
-brenda, staudt, mail
-marco, mail
 
-var uno = {
 
-    "nombre": "",
-    "apellido": null,
-    "mail": ""
-};
 
 

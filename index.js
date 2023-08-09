@@ -2,6 +2,8 @@ require('rootpath')();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
+//const router = express.Router();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
@@ -11,11 +13,11 @@ const configuracion = require("config.json");
 
 
 const controladorPersona = require("controller/personaController.js");
- const controladorUsuario = require("controller/usuarioController.js");
+const controladorUsuario = require("controller/usuarioController.js");
 // const controladorArticulo = require("controller/articuloController.js");
 
 app.use('/api/persona', controladorPersona);
- app.use('/api/usuario', controladorUsuario);
+app.use('/api/usuario', controladorUsuario);
 // app.use('/articulos', controladorArticulo);
 
 //aplicacion --> cuando se ejecuta el use hace dos cosas
